@@ -130,12 +130,11 @@ const Form: FC<FormProps> = ({ handleAdd, editingStudent, handleUpdate }) => {
         <button
           type="submit"
           className="w-full py-2 px-4 rounded-lg font-semibold text-[#1E293B] 
-             bg-gradient-to-br from-[#43C6AC] to-[#F8FFAE] 
-             hover:from-[#0f2027] hover:to-[#2c7744]
+             bg-[#6fd884] hover:bg-[#43C6AC]
              transition-all duration-300 ease-in-out
-             shadow-md hover:shadow-lg transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+             shadow-md hover:shadow-lg transform hover:scale-[1.02]"
         >
-          {editingStudent ? "Update Student" : "Submit Student"}
+          {editingStudent ? "Update student" : "Create student"}
         </button>
 
       </form>

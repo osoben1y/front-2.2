@@ -16,15 +16,14 @@ const Student: FC<StudentProps> = ({ data, handleDelete, handleEdit }) => {
         Student List
       </h2>
 
-      <div className="overflow-x-auto rounded-xl bg-white/10 backdrop-blur-md border border-white/30 shadow-lg">
+      <div className="overflow-x-auto rounded-xl bg-white/10 backdrop-blur-md  border-white/30 shadow-lg">
         <table className="w-full text-sm text-left text-[#1E293B]">
-          <thead className="bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] text-[#1E293B]">
+          <thead className="bg-[6fd884] ">
             <tr>
               <th className="px-4 py-3 font-semibold">№</th>
-              <th className="px-4 py-3 font-semibold">Full Name</th>
+              <th className="px-4 py-3 font-semibold">Name</th>
               <th className="px-4 py-3 font-semibold">Email</th>
               <th className="px-4 py-3 font-semibold">Password</th>
-              <th className="px-4 py-3 font-semibold">Birth Date</th>
               <th className="px-4 py-3 font-semibold">Gender</th>
               <th className="px-4 py-3 text-center font-semibold">Action</th>
             </tr>
@@ -39,7 +38,6 @@ const Student: FC<StudentProps> = ({ data, handleDelete, handleEdit }) => {
                 <td className="px-4 py-3">{student.fullName}</td>
                 <td className="px-4 py-3">{student.email}</td>
                 <td className="px-4 py-3">{student.password}</td>
-                <td className="px-4 py-3">{student.birthDate}</td>
                 <td className="px-4 py-3 capitalize">{student.gender}</td>
                 <td className="px-4 py-3 text-center">
                   <div className="flex items-center justify-center gap-4">

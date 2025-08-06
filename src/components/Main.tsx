@@ -56,15 +56,15 @@ const Main: React.FC = () => {
   };
 
   return (
-    <section className="w-full min-h-screen py-10 px-4 bg-gradient-to-br from-[#43C6AC] to-[#F8FFAE]">
+    <section className="w-full min-h-screen py-10 px-4 bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE]">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <div className="flex gap-4 mb-8 bg-white p-2 rounded-lg shadow-md border border-gray-200">
           <button
             onClick={handlePageButton}
-            className={`px-6 py-2 rounded-md font-semibold bg-gradient-to-br from-[#43C6AC] to-[#F8FFAE] transition-all duration-900 ${
+            className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${
               page
-                ? "text-gray-800 "
-                : "text-white  "
+                ? "text-black "
+                : "text-gray-400  "
             }`}
           >
             Student List
@@ -74,10 +74,10 @@ const Main: React.FC = () => {
               setEditingStudent(null);
               setPage(false);
             }}
-            className={`px-6 py-2 rounded-md font-semibold bg-gradient-to-br from-[#43C6AC] to-[#F8FFAE] transition-all duration-900 ${
+            className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${
               !page && !editingStudent
-                ? "text-gray-800"
-                : " text-white "
+                ? "text-black"
+                : "text-gray-400  "
             }`}
           >
             Add Form
