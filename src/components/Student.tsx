@@ -15,7 +15,7 @@ const Student: FC<StudentProps> = ({ data, handleDelete, handleEdit }) => {
   return (
     <div className="w-full max-w-6xl mx-auto px-4">
       <h2 className="text-3xl font-bold text-center text-[#1E293B] mb-8">
-        Student List
+        Students
       </h2>
 
       {data.length === 0 ? (

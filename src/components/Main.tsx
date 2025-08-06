@@ -8,19 +8,51 @@ const Main: React.FC = () => {
   const [data, setData] = useState<UserForm[]>([
     {
       id: 1,
-      fullName: "umarxoja",
-      email: "umarxoja@gmail.com",
-      password: "bilmadim",
-      birthDate: "1999-12-31",
+      fullName: "Jasur Xudoyberdiyev",
+      email: "jasurx99@gmail.com",
+      password: "alphaTiger23",
+      birthDate: "1998-06-14",
       gender: "male",
     },
     {
       id: 2,
-      fullName: "Bobur Mirzo",
-      email: "boburmirzo@gmail.com",
-      password: "bilmadim",
-      birthDate: "1999-12-31",
+      fullName: "Nodira Mahmudova",
+      email: "nodira.mh@gmail.com",
+      password: "sunnyQueen45",
+      birthDate: "2001-11-29",
+      gender: "female",
+    },
+    {
+      id: 3,
+      fullName: "Otabek Rustamov",
+      email: "otabek_r@gmail.com",
+      password: "strongHorse91",
+      birthDate: "1996-03-08",
       gender: "male",
+    },
+    {
+      id: 4,
+      fullName: "Dilnoza Qodirova",
+      email: "dilnoza.q@gmail.com",
+      password: "moonLight66",
+      birthDate: "2003-09-22",
+      gender: "female",
+    },
+    {
+      id: 5,
+      fullName: "Shahzodbek Karimov",
+      email: "shahzod_krm@gmail.com",
+      password: "qwertyK123",
+      birthDate: "1999-12-03",
+      gender: "male",
+    },
+    {
+      id: 6,
+      fullName: "Zilola Erkinova",
+      email: "zilola.er@gmail.com",
+      password: "flowerGirl88",
+      birthDate: "2002-04-17",
+      gender: "female",
     },
   ]);
 
@@ -61,26 +93,24 @@ const Main: React.FC = () => {
         <div className="flex gap-4 mb-8 bg-white p-2 rounded-lg shadow-md border border-gray-200">
           <button
             onClick={handlePageButton}
-            className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${
-              page
+            className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${page
                 ? "text-black "
                 : "text-gray-400  "
-            }`}
+              }`}
           >
-            Student List
+            Students
           </button>
           <button
             onClick={() => {
               setEditingStudent(null);
               setPage(false);
             }}
-            className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${
-              !page && !editingStudent
+            className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${!page && !editingStudent
                 ? "text-black"
                 : "text-gray-400  "
-            }`}
+              }`}
           >
-            Add Form
+            Add form
           </button>
         </div>
 
