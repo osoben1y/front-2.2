@@ -11,52 +11,63 @@ interface StudentProps {
 
 const Student: FC<StudentProps> = ({ data, handleDelete, handleEdit }) => {
   return (
-    <div className="w-full max-w-5xl mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Student List</h2>
-      <div className="overflow-x-auto shadow-md rounded-xl border border-gray-200">
-        <table className="w-full text-left text-sm bg-white">
-          <thead className="bg-green-600 text-white">
+    <div className="w-full max-w-6xl mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center text-[#1E293B] mb-6">
+        Student List
+      </h2>
+
+      <div className="overflow-x-auto rounded-xl bg-white/10 backdrop-blur-md border border-white/30 shadow-lg">
+        <table className="w-full text-sm text-left text-[#1E293B]">
+          <thead className="bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE] text-[#1E293B]">
             <tr>
-              <th className="px-4 py-3">№</th>
-              <th className="px-4 py-3">Full Name</th>
-              <th className="px-4 py-3">Email</th>
-              <th className="px-4 py-3">Password</th>
-              <th className="px-4 py-3">Birth Date</th>
-              <th className="px-4 py-3">Gender</th>
-              <th className="px-4 py-3 text-center">Action</th>
+              <th className="px-4 py-3 font-semibold">№</th>
+              <th className="px-4 py-3 font-semibold">Full Name</th>
+              <th className="px-4 py-3 font-semibold">Email</th>
+              <th className="px-4 py-3 font-semibold">Password</th>
+              <th className="px-4 py-3 font-semibold">Birth Date</th>
+              <th className="px-4 py-3 font-semibold">Gender</th>
+              <th className="px-4 py-3 text-center font-semibold">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-white/20">
             {data.map((student, index) => (
-              <tr key={student.id} className="hover:bg-gray-100 transition-colors duration-200">
+              <tr
+                key={student.id}
+                className="hover:bg-white/20 transition-colors duration-300"
+              >
                 <td className="px-4 py-3">{index + 1}</td>
                 <td className="px-4 py-3">{student.fullName}</td>
                 <td className="px-4 py-3">{student.email}</td>
                 <td className="px-4 py-3">{student.password}</td>
                 <td className="px-4 py-3">{student.birthDate}</td>
                 <td className="px-4 py-3 capitalize">{student.gender}</td>
-                <td className="px-4 py-3 text-center flex items-center justify-center gap-3">
-                  <button
-                    onClick={() => handleEdit(student)}
-                    className="text-blue-600 hover:text-blue-800 transition"
-                    title="Edit student"
-                  >
-                    <FontAwesomeIcon icon={faEdit} />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(student.id)}
-                    className="text-red-600 hover:text-red-800 transition"
-                    title="Delete student"
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
+                <td className="px-4 py-3 text-center">
+                  <div className="flex items-center justify-center gap-4">
+                    <button
+                      onClick={() => handleEdit(student)}
+                      className="text-blue-700 hover:text-blue-900 transition"
+                      title="Edit student"
+                    >
+                      <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(student.id)}
+                      className="text-red-600 hover:text-red-800 transition"
+                      title="Delete student"
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
 
             {data.length === 0 && (
               <tr>
-                <td colSpan={7} className="text-center py-6 text-gray-500 italic">
+                <td
+                  colSpan={7}
+                  className="text-center py-6 italic text-[#1E293B]/60"
+                >
                   No students available
                 </td>
               </tr>

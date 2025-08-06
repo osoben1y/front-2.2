@@ -48,17 +48,14 @@ const Form: FC<FormProps> = ({ handleAdd, editingStudent, handleUpdate }) => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+    <div className="w-full max-w-2xl mx-auto bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/30">
+      <h2 className="text-3xl font-bold text-center text-[#1E293B] mb-6">
         {editingStudent ? "Edit Student" : "Add New Student"}
       </h2>
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit} className="space-y-5 ">
         <div>
-          <label
-            htmlFor="fullName"
-            className="block text-gray-700 font-semibold mb-2"
-          >
-            Full Name
+          <label htmlFor="fullName" className="block text-[#1E293B] font-semibold mb-2">
+            * Full name
           </label>
           <input
             type="text"
@@ -66,16 +63,14 @@ const Form: FC<FormProps> = ({ handleAdd, editingStudent, handleUpdate }) => {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-600"
+            placeholder="e.g. Umarxoja Karimov"
+            className="w-full px-3 py-2 border  text-[#1E293B] bg-transparent rounded-lg placeholder-[#1E293B]/60 focus:outline-none focus:border-white focus:ring-1 focus:ring-white/50"
           />
         </div>
 
         <div>
-          <label
-            htmlFor="email"
-            className="block text-gray-700 font-semibold mb-2"
-          >
-            Email
+          <label htmlFor="email" className="block text-[#1E293B] font-semibold mb-2">
+            * Email
           </label>
           <input
             type="email"
@@ -83,16 +78,14 @@ const Form: FC<FormProps> = ({ handleAdd, editingStudent, handleUpdate }) => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-600"
+            placeholder="e.g. example@mail.com"
+            className="w-full px-3 py-2 border  text-[#1E293B] bg-transparent rounded-lg placeholder-[#1E293B]/60 focus:outline-none focus:border-white focus:ring-1 focus:ring-white/50"
           />
         </div>
 
         <div>
-          <label
-            htmlFor="password"
-            className="block text-gray-700 font-semibold mb-2"
-          >
-            Password
+          <label htmlFor="password" className="block text-[#1E293B] font-semibold mb-2">
+            * Password
           </label>
           <div className="relative">
             <input
@@ -101,12 +94,13 @@ const Form: FC<FormProps> = ({ handleAdd, editingStudent, handleUpdate }) => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-600"
+              placeholder="**********"
+              className="w-full px-3 py-2 border  text-[#1E293B] bg-transparent rounded-lg placeholder-[#1E293B]/60 focus:outline-none focus:border-white focus:ring-1 focus:ring-white/50"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute top-1/2 right-3 transform -translate-y-1/2"
+              className="absolute top-1/2 right-3 transform -translate-y-1/2 text-[#1E293B]/70 hover:text-[#1E293B]"
             >
               {showPassword ? (
                 <FontAwesomeIcon icon={faEyeSlash} />
@@ -118,47 +112,32 @@ const Form: FC<FormProps> = ({ handleAdd, editingStudent, handleUpdate }) => {
         </div>
 
         <div>
-          <label
-            htmlFor="birthDate"
-            className="block text-gray-700 font-semibold mb-2"
-          >
-            Birth Date
-          </label>
-          <input
-            type="date"
-            id="birthDate"
-            name="birthDate"
-            value={formData.birthDate}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-600"
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="gender"
-            className="block text-gray-700 font-semibold mb-2"
-          >
-            Gender
+          <label htmlFor="gender" className="block text-[#1E293B] font-semibold mb-2">
+            * Gender
           </label>
           <select
             id="gender"
             name="gender"
             value={formData.gender}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-600"
+            className="w-full px-3 py-2 border text-[#1E293B] bg-transparent rounded-lg focus:outline-none focus:border-white focus:ring-1 focus:ring-white/50"
           >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option className="text-black" value="male">Male</option>
+            <option className="text-black" value="female">Female</option>
           </select>
         </div>
 
         <button
           type="submit"
-          className="w-full bg-green-600 text-white font-semibold py-2 rounded-lg hover:bg-green-700 transition duration-300"
+          className="w-full py-2 px-4 rounded-lg font-semibold text-[#1E293B] 
+             bg-gradient-to-br from-[#43C6AC] to-[#F8FFAE] 
+             hover:from-[#0f2027] hover:to-[#2c7744]
+             transition-all duration-300 ease-in-out
+             shadow-md hover:shadow-lg transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
         >
-          {editingStudent ? "Update" : "Submit"}
+          {editingStudent ? "Update Student" : "Submit Student"}
         </button>
+
       </form>
     </div>
   );
