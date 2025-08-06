@@ -24,8 +24,11 @@ const Main: React.FC = () => {
     },
   ]);
 
+  const [editingStudent, setEditingStudent] = useState<UserForm | null>(null);
+
   const handlePageButton = () => {
     setPage((prev) => !prev);
+    setEditingStudent(null); // sahifa o‘zgarganda reset
   };
 
   const handleAddStudent = (newStudent: UserForm) => {
@@ -35,6 +38,21 @@ const Main: React.FC = () => {
 
   const handleDeleteStudent = (id: number) => {
     setData((prev) => prev.filter((student) => student.id !== id));
+  };
+
+  const handleEditClick = (student: UserForm) => {
+    setEditingStudent(student);
+    setPage(false);
+  };
+
+  const handleUpdateStudent = (updatedStudent: UserForm) => {
+    setData((prev) =>
+      prev.map((student) =>
+        student.id === updatedStudent.id ? updatedStudent : student
+      )
+    );
+    setEditingStudent(null);
+    setPage(true);
   };
 
   return (
@@ -52,9 +70,12 @@ const Main: React.FC = () => {
             Student List
           </button>
           <button
-            onClick={handlePageButton}
+            onClick={() => {
+              setEditingStudent(null);
+              setPage(false);
+            }}
             className={`px-6 py-2 rounded-md font-semibold transition-all duration-900 ${
-              !page
+              !page && !editingStudent
                 ? "bg-green-600 text-white"
                 : "bg-gray-100 text-gray-800 hover:bg-green-100"
             }`}
@@ -65,9 +86,17 @@ const Main: React.FC = () => {
 
         <div className="w-full">
           {page ? (
-            <Student data={data} handleDelete={handleDeleteStudent} />
+            <Student
+              data={data}
+              handleDelete={handleDeleteStudent}
+              handleEdit={handleEditClick}
+            />
           ) : (
-            <Form handleAdd={handleAddStudent} />
+            <Form
+              handleAdd={handleAddStudent}
+              editingStudent={editingStudent}
+              handleUpdate={handleUpdateStudent}
+            />
           )}
         </div>
       </div>

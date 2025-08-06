@@ -1,14 +1,15 @@
 import React, { type FC } from "react";
 import type { UserForm } from "./User/User.form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 interface StudentProps {
   data: UserForm[];
   handleDelete: (id: number) => void;
+  handleEdit: (student: UserForm) => void;
 }
 
-const Student: FC<StudentProps> = ({ data, handleDelete }) => {
+const Student: FC<StudentProps> = ({ data, handleDelete, handleEdit }) => {
   return (
     <div className="w-full max-w-5xl mx-auto px-4">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Student List</h2>
@@ -27,17 +28,21 @@ const Student: FC<StudentProps> = ({ data, handleDelete }) => {
           </thead>
           <tbody className="divide-y divide-gray-200">
             {data.map((student, index) => (
-              <tr
-                key={student.id}
-                className="hover:bg-gray-100 transition-colors duration-200"
-              >
+              <tr key={student.id} className="hover:bg-gray-100 transition-colors duration-200">
                 <td className="px-4 py-3">{index + 1}</td>
                 <td className="px-4 py-3">{student.fullName}</td>
                 <td className="px-4 py-3">{student.email}</td>
                 <td className="px-4 py-3">{student.password}</td>
                 <td className="px-4 py-3">{student.birthDate}</td>
                 <td className="px-4 py-3 capitalize">{student.gender}</td>
-                <td className="px-4 py-3 text-center">
+                <td className="px-4 py-3 text-center flex items-center justify-center gap-3">
+                  <button
+                    onClick={() => handleEdit(student)}
+                    className="text-blue-600 hover:text-blue-800 transition"
+                    title="Edit student"
+                  >
+                    <FontAwesomeIcon icon={faEdit} />
+                  </button>
                   <button
                     onClick={() => handleDelete(student.id)}
                     className="text-red-600 hover:text-red-800 transition"
