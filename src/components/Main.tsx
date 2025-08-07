@@ -5,6 +5,7 @@ import type { UserForm } from "./User/User.form";
 
 const Main: React.FC = () => {
   const [page, setPage] = useState(true);
+  const [search, setSearch] = useState("");
   const [data, setData] = useState<UserForm[]>([
     {
       id: 1,
@@ -61,6 +62,7 @@ const Main: React.FC = () => {
   const handlePageButton = () => {
     setPage((prev) => !prev);
     setEditingStudent(null);
+    setSearch("");
   };
 
   const handleAddStudent = (newStudent: UserForm) => {
@@ -87,37 +89,54 @@ const Main: React.FC = () => {
     setPage(true);
   };
 
+  const filteredData = data.filter((student) =>
+    student.fullName.toLowerCase().includes(search.toLowerCase()) ||
+    student.email.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <section className="w-full min-h-screen py-10 px-4 bg-gradient-to-r from-[#43C6AC] to-[#F8FFAE]">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <div className="flex gap-4 mb-8 bg-white p-2 rounded-lg shadow-md border border-gray-200">
-          <button
-            onClick={handlePageButton}
-            className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${page
-                ? "text-black "
-                : "text-gray-400  "
-              }`}
-          >
-            Students
-          </button>
-          <button
-            onClick={() => {
-              setEditingStudent(null);
-              setPage(false);
-            }}
-            className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${!page && !editingStudent
-                ? "text-black"
-                : "text-gray-400  "
-              }`}
-          >
-            Add form
-          </button>
+        <div className="flex flex-col sm:flex-row items-center gap-4 mb-6 w-full justify-between">
+          <div className="flex gap-4 bg-white p-2 rounded-lg shadow-md border border-gray-200">
+            <button
+              onClick={handlePageButton}
+              className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${page
+                  ? "text-black "
+                  : "text-gray-400  "
+                }`}
+            >
+              Students
+            </button>
+            <button
+              onClick={() => {
+                setEditingStudent(null);
+                setPage(false);
+              }}
+              className={`px-6 py-2 rounded-md font-semibold bg-[#a1d1b1] transition-all duration-500 ${!page && !editingStudent
+                  ? "text-black"
+                  : "text-gray-400  "
+                }`}
+            >
+              Add form
+            </button>
+          </div>
+
+          {page && (
+            <input
+              type="text"
+              placeholder="Search by name or email..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full sm:w-80 px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
+            />
+          )}
         </div>
 
         <div className="w-full">
           {page ? (
             <Student
-              data={data}
+              data={filteredData}
               handleDelete={handleDeleteStudent}
               handleEdit={handleEditClick}
             />
